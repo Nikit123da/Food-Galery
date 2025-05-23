@@ -1,0 +1,25 @@
+.popup {
+  color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  border: 3px solid rgb(100, 98, 98);
+  z-index: 2;   
+  max-height: 60%;
+  max-width: 60%;
+  position: fixed;  
+  padding: 2rem;
+  overflow-y: scroll;
+}
+
+.popup>img{
+    width: 10%;
+    height: 10%;
+}
+
+.popup>button{
+    width: 10%;
+    height: 10%;
+}

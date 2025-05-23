@@ -1,0 +1,25 @@
+
+
+.card{  
+    border-radius: 5%;
+    width: 19%; 
+    height: 30%;    
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: black 1px 1px 21px;
+}
+
+h2 {
+    color: black;
+    text-shadow: white 1px 1px 21px;
+    z-index: 2;
+    text-align: center;
+    transition: font-size 1s, color 1s;
+}
+
+h2:hover {
+    font-size: 30px;
+    color: white;
+}
