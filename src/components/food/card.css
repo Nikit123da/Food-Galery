@@ -9,17 +9,19 @@
     justify-content: center;
     align-items: center;
     box-shadow: black 1px 1px 21px;
-}
+    font-weight: 900;
+    -webkit-text-stroke: .5px white;}
 
 h2 {
     color: black;
-    text-shadow: white 1px 1px 21px;
+    text-shadow: white 10px 0 20px;
     z-index: 2;
     text-align: center;
-    transition: font-size 1s, color 1s;
+    transition: font-size 1s, color 1s, -webkit-text-stroke 1s;
 }
 
 h2:hover {
     font-size: 30px;
     color: white;
+    -webkit-text-stroke: .5px red;
 }

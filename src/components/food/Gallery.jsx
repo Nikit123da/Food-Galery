@@ -10,10 +10,23 @@ function Gallery() {
     const [categories, setCategorie] = useState([]);
     const[itemList, setItemList] = useState([]);
     const [clickedMeal, setClickedMeal] = useState(null);
+    const [tableData, setTableData] = useState([]);
 
-
-
-
+    const fillTable = (mealData) => {
+        const rows = [];
+        for (let i = 1; i <= 20; i++) {
+          const ingredient = mealData[`strIngredient${i}`];
+          const measure = mealData[`strMeasure${i}`];
+          if (!ingredient || !measure) break;
+          rows.push({
+            id: i,
+            ingredients: ingredient,
+            measurements: measure,
+          });
+        }
+        setTableData(rows);
+      };
+    
         useEffect(() => 
         {
             const getData = async (url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list') => 
@@ -33,7 +46,10 @@ function Gallery() {
 
     const setImageBackground = ((img) => {
         return{
-            backgroundImage: `url(${img})`
+            backgroundImage: `url(${img})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
         };
 
     });
@@ -53,10 +69,11 @@ function Gallery() {
         const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + id;
         try{
             const response = await axios(url);
-            console.log(response.data.meals)
+            console.log(response.data.meals);
             const meal = response.data?.meals?.[0];
 
             if (meal) {
+                fillTable(meal);
                 setClickedMeal(meal); 
             } else {
             console.log("No meal found for this ID");
@@ -71,9 +88,9 @@ function Gallery() {
   return (
     <div className='container'>
         <div className='filters'>
-            <label htmlFor='category'>Categories</label>
+            <label htmlFor='category'>Categorie: </label>
             <select id="category" onChange={handleCategoryChange}>
-                Categorie <option value = "" selected disabled> Select...</option>
+                  <option value = "" selected disabled>Select...</option>
                 {
                     categories && categories.map((cat, index) => 
                     {
@@ -95,7 +112,15 @@ function Gallery() {
                 })
             }
 
-            {clickedMeal && <IngridientsPopup details={clickedMeal} onClose={() => setClickedMeal(null)} />}
+            {
+            clickedMeal && <IngridientsPopup 
+                details={clickedMeal}
+                onClose={() => setClickedMeal(null)} 
+                style={setImageBackground(clickedMeal.strMealThumb)}
+                tableData={tableData}
+        />
+        
+            }
         </div>
     </div>
   )

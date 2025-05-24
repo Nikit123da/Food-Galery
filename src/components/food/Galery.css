@@ -14,7 +14,10 @@
 
 
 .gallery{
-    border: 3px red solid;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0 15px 1px black;
+    border: 5px black solid;
     height: 80%;
     width: 90%;
     display: flex;
@@ -23,4 +26,24 @@
     flex-wrap: wrap;
     overflow-y: scroll;
 }
+
+.filters {
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+select{
+    width: 10%;
+    background-color: white;
+    border-top: white;
+    border-right: white;
+    border-left: white;
+    border-bottom: black 2px solid;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+
 
